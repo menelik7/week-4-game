@@ -1,0 +1,82 @@
+body {
+	background: url("../images/background.jpg");
+	font-family: 'Orbitron', sans-serif;
+	color: #000000;
+}
+
+header {
+	width: 100%;
+	padding-right: 15%;
+	padding-top: 10px;
+}
+
+h1 {
+	float: right;
+}
+
+h2 {
+	margin-top: 0;
+}
+
+button {
+	float: left;
+	background: #fff;
+	padding: 0;
+}
+.col-md-8,
+.col-md-6,
+.col-md-4 {
+	text-align: center;
+	padding: 0;
+}
+
+/**Main Content**/
+
+/**Characters**/
+#charOptions1,
+#charOptions2,
+#charOptions3,
+#charOptions4 {
+	float: left;
+	margin: 70px 0 0 0;
+	background: #fff;
+	border: 2px solid #588f27;
+	text-align: center;
+}
+
+.character {
+	float: left;
+	background: #fff;
+	border: 2px solid #588f27;
+	text-align: center;
+	margin: 0;
+}
+
+/**Enemies**/
+.enemy {
+	float: left;
+	background: #F00807;
+	border: 2px solid #000000;
+	margin: 0;
+}
+
+/**Defender**/
+.defender {
+	float: left;
+	color: #fff;
+	background: #000000;
+	border: 2px solid #588f27;
+	text-align: center;
+	margin: 0;
+}
+
+#restart {
+	padding: 0;
+}
+
+/**picture properties**/
+.myCharacter {
+	height: 80px;
+	width: 130px;
+	margin: 0 15px 0 15px;
+}

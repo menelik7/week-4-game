@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Crystal Collector</title> 
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="assets/javascript/game.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Orbitron" rel="stylesheet">
+</head>
+
+
+<body>
+
+    <header>
+    <h1>Star Wars RPG!</h1>
+    </header>
+
+    <div class="container">
+        
+<!--Character Options-->
+        <div class="row">
+            <div class="col-md-8" id="first-row">
+
+                <button id="charOptions1">
+                <div id="first">
+                <div id="name">Obi-Wan Kenobi</div>
+                <img src= "http://screenrant.com/wp-content/uploads/star-wars-obi-wan-kenobi-movie.jpg" class="myCharacter" alt="Obi-Wan Kenobi">
+                <div id="obiHealth">health power here</div>
+                </div>
+                </button>
+
+                <button id="charOptions2">
+                <div id="second">
+                <div id="name">Luke Skywalker</div>
+                <img src= "https://qph.ec.quoracdn.net/main-qimg-86b51a53d790b7ac1a2935dcb4412e82-c" class="myCharacter" alt="Obi-Wan Kenobi">
+                <div id="skyHealth">health power here</div>
+                </div>
+                </button>
+
+                <button id="charOptions3">
+                <div id="third">
+                <div id="name">Dart Sidious</div>
+                <img src= "http://www.squareeyed.tv/wp-content/uploads/2016/03/palp.png" class="myCharacter" alt="Obi-Wan Kenobi">
+                <div id="sidHealth">health power here</div>
+                </div>
+                </button>
+
+                <button id="charOptions4">
+                <div id="fourth">
+                <div id="name">Dart Maul</div>
+                <img src= "https://lumiere-a.akamaihd.net/v1/images/Darth-Maul_632eb5af.jpeg?region=0%2C44%2C1600%2C800" class="myCharacter" alt="Obi-Wan Kenobi">
+                <div id="maulHealth">health power here</div>
+                </div>
+                </button>
+
+            </div>
+        </div>
+
+<!--Your Character-->
+        <div class="row">
+            <h3>Your Character</h3>
+            <div class="col-md-6" id="second-row"></div>
+        </div>
+
+<!--Enemies Available-->
+        <div class="row">
+            <h3>Enemies Available To Attack</h3>
+            <div class="col-md-6" id="third-row"></div>
+        </div>
+
+<!--Fight Section-->
+        <div class="row">
+        <h3>Fight Section</h3>
+            <button id="attack">Attack</button>
+        </div>
+
+<!--Defender Row-->
+        <div class="row">
+            <h3>Defender</h3>
+            <div class="col-md-4" id="fifth-row">
+            <div class="col-md-12" id="restart"><p></p><button type="reset" value="Reset" onClick="window.location.reload()">Restart</button></div>  
+        </div>
+
+        <audio id="load"><source src="assets/sounds/theme.mp3"></audio>
+
+	</div>
+</body>
+</html>
+
+
+                
