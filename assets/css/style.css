@@ -23,6 +23,7 @@ button {
 	background: #fff;
 	padding: 0;
 }
+.col-md-12,
 .col-md-8,
 .col-md-6,
 .col-md-4 {
@@ -33,10 +34,10 @@ button {
 /**Main Content**/
 
 /**Characters**/
-#charOptions1,
-#charOptions2,
-#charOptions3,
-#charOptions4 {
+#charOption1,
+#charOption2,
+#charOption3,
+#charOption4 {
 	float: left;
 	margin: 70px 0 0 0;
 	background: #fff;

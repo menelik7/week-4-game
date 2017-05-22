@@ -27,105 +27,276 @@ document.querySelector("#skyHealth").innerHTML = skyHealth;
 document.querySelector("#sidHealth").innerHTML = sidHealth;
 document.querySelector("#maulHealth").innerHTML = maulHealth;
 
-//Choose character and append all others to the Enemies row.
-$('#charOptions1').on('click', function(){
-    var character = $("#first");
-    character.addClass("character");
-    character.append(first);
-    $("#second-row").append(character);
+var restart = document.getElementById("restart");
+window.onload = function() {
+	$('#restart').hide();
+}
 
-    var enemyOption1 = $("#second");
-    enemyOption1.addClass("enemy");
-    enemyOption1.append(second);
-    $("#third-row").append(enemyOption1);
+	//Choose character and append all others to the Enemies row.
+	//Obi character choice.
+	$("#charOption1").on("click", function(){
+		var charOption1 = document.getElementById("first");
+		var character = $("<div>");
+		character.addClass("character");
+		character.attr("id", "characterOne");
+		character.append(charOption1.innerHTML);
+		$("#second-row").append(character);
 
-    var enemyOption2 = $("#third");
-    enemyOption2.addClass("enemy");
-    enemyOption2.append(third);
-    $("#third-row").append(enemyOption2);
+		var charOption2 = document.getElementById("second");
+		var enemyOption1 = $("<div>");
+		enemyOption1.addClass("enemy");
+		enemyOption1.attr("id", "enemyOne");
+		enemyOption1.append(charOption2.innerHTML);
+		$("#third-row").append(enemyOption1);
 
-    var enemyOption4 = $("#fourth");
-    enemyOption4.addClass("enemy");
-    enemyOption4.append(fourth);
-    $("#third-row").append(enemyOption4);
+		var charOption3 = document.getElementById("third");
+		var enemyOption2 = $("<div>");
+		enemyOption2.addClass("enemy");
+		enemyOption2.attr("id", "enemyTwo");
+		enemyOption2.append(charOption3.innerHTML);
+		$("#third-row").append(enemyOption2);
 
-    $('#first-row').empty();
+		var charOption4 = document.getElementById("fourth");
+		var enemyOption3 = $("<div>");
+		enemyOption3.addClass("enemy");
+		enemyOption3.attr("id", "enemyThree");
+		enemyOption3.append(charOption4.innerHTML);
+		$("#third-row").append(enemyOption3);
 
-});
+	    $('#first-row').empty();
 
-$('#charOptions2').on('click', function(){
-    var character = $("#second");
-    character.addClass("character");
-    character.append(second);
-    $("#second-row").append(character);
 
-    var enemyOption1 = $("#first");
-    enemyOption1.addClass("enemy");
-    enemyOption1.append(first);
-    $("#third-row").append(enemyOption1);
+	    	//Append chosen enemy to the defender row.
+			$("#enemyOne").on("click", function(){
+				var enemyOne = document.getElementById("enemyOne");
+				var defender = $("<div>");
+				defender.addClass("defender");
+				defender.attr("id", "defenderOne");
+				defender.append(enemyOne.innerHTML);
+				$("#fifth-row").append(defender)   
+				$('#enemyOne').hide();
+			});
 
-    var enemyOption2 = $("#third");
-    enemyOption2.addClass("enemy");
-    enemyOption2.append(third);
-    $("#third-row").append(enemyOption2);
+			$("#enemyTwo").on("click", function(){
+				var enemyTwo = document.getElementById("enemyTwo");
+				var defender = $("<div>");
+				defender.addClass("defender");
+				defender.attr("id", "defenderOne");
+				defender.append(enemyTwo.innerHTML);
+				$("#fifth-row").append(defender)
+				$('#enemyTwo').hide();
+			});
 
-    var enemyOption4 = $("#fourth");
-    enemyOption4.addClass("enemy");
-    enemyOption4.append(fourth);
-    $("#third-row").append(enemyOption4);
+			$("#enemyThree").on("click", function(){
+				var enemyThree = document.getElementById("enemyThree");
+				var defender = $("<div>");
+				defender.addClass("defender");
+				defender.attr("id", "defenderOne");
+				defender.append(enemyThree.innerHTML);
+				$("#fifth-row").append(defender)
+				$('#enemyThree').hide();
+			});
+	});
 
-    $('#first-row').empty();
 
-});
+	//Luke character choice.
+	$("#charOption2").on("click", function(){
+		var charOption2 = document.getElementById("second");
+		var character = $("<div>");
+		character.addClass("character");
+		character.attr("id", "characterOne");
+		character.append(charOption2.innerHTML);
+		$("#second-row").append(character);
 
-$('#charOptions3').on('click', function(){
-    var character = $("#third");
-    character.addClass("character");
-    character.append(third);
-    $("#second-row").append(character);
+		var charOption1 = document.getElementById("first");
+		var enemyOption1 = $("<div>");
+		enemyOption1.addClass("enemy");
+		enemyOption1.attr("id", "enemyOne");
+		enemyOption1.append(charOption1.innerHTML);
+		$("#third-row").append(enemyOption1);
 
-    var enemyOption1 = $("#first");
-    enemyOption1.addClass("enemy");
-    enemyOption1.append(first);
-    $("#third-row").append(enemyOption1);
+		var charOption3 = document.getElementById("third");
+		var enemyOption2 = $("<div>");
+		enemyOption2.addClass("enemy");
+		enemyOption2.attr("id", "enemyTwo");
+		enemyOption2.append(charOption3.innerHTML);
+		$("#third-row").append(enemyOption2);
 
-    var enemyOption2 = $("#second");
-    enemyOption2.addClass("enemy");
-    enemyOption2.append(second);
-    $("#third-row").append(enemyOption2);
+		var charOption4 = document.getElementById("fourth");
+		var enemyOption3 = $("<div>");
+		enemyOption3.addClass("enemy");
+		enemyOption3.attr("id", "enemyThree");
+		enemyOption3.append(charOption4.innerHTML);
+		$("#third-row").append(enemyOption3);
 
-    var enemyOption4 = $("#fourth");
-    enemyOption4.addClass("enemy");
-    enemyOption4.append(fourth);
-    $("#third-row").append(enemyOption4);
+	    $('#first-row').empty();
 
-    $('#first-row').empty();
 
-});
+	    	//Append chosen enemy to the defender row.
+			$("#enemyOne").on("click", function(){
+				var enemyOne = document.getElementById("enemyOne");
+				var defender = $("<div>");
+				defender.addClass("defender");
+				defender.attr("id", "defenderOne");
+				defender.append(enemyOne.innerHTML);
+				$("#fifth-row").append(defender)   
+				$('#enemyOne').hide();
+			});
 
-$('#charOptions4').on('click', function(){
-    var character = $("#fourth");
-    character.addClass("character");
-    character.append(fourth);
-    $("#second-row").append(character);
+			$("#enemyTwo").on("click", function(){
+				var enemyTwo = document.getElementById("enemyTwo");
+				var defender = $("<div>");
+				defender.addClass("defender");
+				defender.attr("id", "defenderOne");
+				defender.append(enemyTwo.innerHTML);
+				$("#fifth-row").append(defender)
+				$('#enemyTwo').hide();
+			});
 
-    var enemyOption1 = $("#first");
-    enemyOption1.addClass("enemy");
-    enemyOption1.append(first);
-    $("#third-row").append(enemyOption1);
+			$("#enemyThree").on("click", function(){
+				var enemyThree = document.getElementById("enemyThree");
+				var defender = $("<div>");
+				defender.addClass("defender");
+				defender.attr("id", "defenderOne");
+				defender.append(enemyThree.innerHTML);
+				$("#fifth-row").append(defender)
+				$('#enemyThree').hide();
+			});
+	});
 
-    var enemyOption2 = $("#second");
-    enemyOption2.addClass("enemy");
-    enemyOption2.append(second);
-    $("#third-row").append(enemyOption2);
 
-    var enemyOption4 = $("#third");
-    enemyOption4.addClass("enemy");
-    enemyOption4.append(third);
-    $("#third-row").append(enemyOption4);
+	//Sidious character choice.
+	$("#charOption3").on("click", function(){
+		var charOption3 = document.getElementById("third");
+		var character = $("<div>");
+		character.addClass("character");
+		character.attr("id", "characterOne");
+		character.append(charOption3.innerHTML);
+		$("#second-row").append(character);
 
-    $('#first-row').empty();
+		var charOption1 = document.getElementById("first");
+		var enemyOption1 = $("<div>");
+		enemyOption1.addClass("enemy");
+		enemyOption1.attr("id", "enemyOne");
+		enemyOption1.append(charOption1.innerHTML);
+		$("#third-row").append(enemyOption1);
 
-});
+		var charOption2 = document.getElementById("second");
+		var enemyOption2 = $("<div>");
+		enemyOption2.addClass("enemy");
+		enemyOption2.attr("id", "enemyTwo");
+		enemyOption2.append(charOption2.innerHTML);
+		$("#third-row").append(enemyOption2);
+
+		var charOption4 = document.getElementById("fourth");
+		var enemyOption3 = $("<div>");
+		enemyOption3.addClass("enemy");
+		enemyOption3.attr("id", "enemyThree");
+		enemyOption3.append(charOption4.innerHTML);
+		$("#third-row").append(enemyOption3);
+
+	    $('#first-row').empty();
+
+
+	    	//Append chosen enemy to the defender row.
+			$("#enemyOne").on("click", function(){
+				var enemyOne = document.getElementById("enemyOne");
+				var defender = $("<div>");
+				defender.addClass("defender");
+				defender.attr("id", "defenderOne");
+				defender.append(enemyOne.innerHTML);
+				$("#fifth-row").append(defender)   
+				$('#enemyOne').hide();
+			});
+
+			$("#enemyTwo").on("click", function(){
+				var enemyTwo = document.getElementById("enemyTwo");
+				var defender = $("<div>");
+				defender.addClass("defender");
+				defender.attr("id", "defenderOne");
+				defender.append(enemyTwo.innerHTML);
+				$("#fifth-row").append(defender)
+				$('#enemyTwo').hide();
+			});
+
+			$("#enemyThree").on("click", function(){
+				var enemyThree = document.getElementById("enemyThree");
+				var defender = $("<div>");
+				defender.addClass("defender");
+				defender.attr("id", "defenderOne");
+				defender.append(enemyThree.innerHTML);
+				$("#fifth-row").append(defender)
+				$('#enemyThree').hide();
+			});
+	});
+
+
+	//Sidious character choice.
+	$("#charOption4").on("click", function(){
+		var charOption4 = document.getElementById("fourth");
+		var character = $("<div>");
+		character.addClass("character");
+		character.attr("id", "characterOne");
+		character.append(charOption4.innerHTML);
+		$("#second-row").append(character);
+
+		var charOption1 = document.getElementById("first");
+		var enemyOption1 = $("<div>");
+		enemyOption1.addClass("enemy");
+		enemyOption1.attr("id", "enemyOne");
+		enemyOption1.append(charOption1.innerHTML);
+		$("#third-row").append(enemyOption1);
+
+		var charOption2 = document.getElementById("second");
+		var enemyOption2 = $("<div>");
+		enemyOption2.addClass("enemy");
+		enemyOption2.attr("id", "enemyTwo");
+		enemyOption2.append(charOption2.innerHTML);
+		$("#third-row").append(enemyOption2);
+
+		var charOption3 = document.getElementById("third");
+		var enemyOption3 = $("<div>");
+		enemyOption3.addClass("enemy");
+		enemyOption3.attr("id", "enemyThree");
+		enemyOption3.append(charOption3.innerHTML);
+		$("#third-row").append(enemyOption3);
+
+	    $('#first-row').empty();
+
+
+	    	//Append chosen enemy to the defender row.
+			$("#enemyOne").on("click", function(){
+				var enemyOne = document.getElementById("enemyOne");
+				var defender = $("<div>");
+				defender.addClass("defender");
+				defender.attr("id", "defenderOne");
+				defender.append(enemyOne.innerHTML);
+				$("#fifth-row").append(defender)   
+				$('#enemyOne').hide();
+			});
+
+			$("#enemyTwo").on("click", function(){
+				var enemyTwo = document.getElementById("enemyTwo");
+				var defender = $("<div>");
+				defender.addClass("defender");
+				defender.attr("id", "defenderOne");
+				defender.append(enemyTwo.innerHTML);
+				$("#fifth-row").append(defender)
+				$('#enemyTwo').hide();
+			});
+
+			$("#enemyThree").on("click", function(){
+				var enemyThree = document.getElementById("enemyThree");
+				var defender = $("<div>");
+				defender.addClass("defender");
+				defender.attr("id", "defenderOne");
+				defender.append(enemyThree.innerHTML);
+				$("#fifth-row").append(defender)
+				$('#enemyThree').hide();
+			});
+	});
+
+
+
 
 });
