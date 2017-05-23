@@ -4,11 +4,11 @@ $(document).ready(function(){
 
 var obiHealth = 120;
 var obiAttack = 0;
-var obiCounterAttack = 15;
+var obiCounterAttack = 10;
 
 var skyHealth = 100;
 var skyAttack = 0;
-var skyCounterAttack = 10;//gave Luke more power than the instructions based on the percentage points.
+var skyCounterAttack = 5;
 
 var sidHealth = 150;
 var sidAttack = 0;
@@ -81,7 +81,8 @@ window.onload = function() {
 				defender.addClass("defender");
 				defender.attr("id", "defenderOne");
 				defender.append(enemyOne.innerHTML);
-				$("#fifth-row").append(defender)   
+				$("#fifth-row").append(defender)
+				$("#attack").show();   
 				$('#enemyOne').empty();
 				$('#enemyOne').hide();
 
@@ -92,9 +93,21 @@ window.onload = function() {
 									   "<p>Luke Skywalker attacked you back for " + skyCounterAttack + " damages</p>";           						
 									    document.querySelector("#status").innerHTML = html;
 						    obiHealth -= skyCounterAttack;
-						    var html =  document.querySelector("#obiHealth").innerHTML = obiHealth;
+						   				$("#obiHealth").html(obiHealth);
 						    skyHealth -= obiAttack;
-						    var html  = document.querySelector("#skyHealth").innerHTML = skyHealth;
+						   				$("#skyHealth").html(skyHealth);
+
+						    		if ((obiHealth <= 0) && (skyHealth > 0)) {
+						                $("#status").html("<strong>GAME OVER!!!</strong>");
+						                $("#attack").hide();
+						    			$('#restart').show();
+						    		}
+						    		else if ((obiHealth > 0) && (skyHealth <= 0)) {
+						                $("#status").html("You Win!  Pick your next enemy...");
+						    			$("#defenderOne").hide();
+						    			$("#defenderOne").empty();
+						    			$("#attack").hide();
+						    		}
 						});
 			});
 
@@ -102,22 +115,35 @@ window.onload = function() {
 				var enemyTwo = document.getElementById("enemyTwo");
 				var defender = $("<div>");
 				defender.addClass("defender");
-				defender.attr("id", "defenderOne");
+				defender.attr("id", "defenderTwo");
 				defender.append(enemyTwo.innerHTML);
 				$("#fifth-row").append(defender)
+				$("#attack").show();
 				$('#enemyTwo').empty();
 				$('#enemyTwo').hide();
 
 						//Compute values between character and defender.
 						$("#attack").on("click", function(){
-							obiAttack +=8;
+							obiAttack +=10;
 							var html = "<p>You attacked Darth Sidious for " + obiAttack + " damages</p>" +
 									   "<p>Darth Sidious attacked you back for " + sidCounterAttack + " damages</p>";           						
 									    document.querySelector("#status").innerHTML = html;
 						    obiHealth -= sidCounterAttack;
-						    var html =  document.querySelector("#obiHealth").innerHTML = obiHealth;
+						    			$("#obiHealth").html(obiHealth);
 						    sidHealth -= obiAttack;
-						    var html  = document.querySelector("#sidHealth").innerHTML = sidHealth;
+						    			$("#sidHealth").html(sidHealth);
+
+						    		if ((obiHealth <= 0) && (sidHealth > 0)) {
+						                $("#status").html("<strong>GAME OVER!!!</strong>");
+						                $("#attack").hide();
+						    			$('#restart').show();
+						    		}
+						    		else if ((obiHealth > 0) && (sidHealth <= 0)) {
+						                $("#status").html("You Win!  Pick your next enemy...");
+						                $("#defenderTwo").empty();
+						    			$("#defenderTwo").hide();
+						    			$("#attack").hide();
+						    		}
 						});
 			});
 
@@ -125,15 +151,16 @@ window.onload = function() {
 				var enemyThree = document.getElementById("enemyThree");
 				var defender = $("<div>");
 				defender.addClass("defender");
-				defender.attr("id", "defenderOne");
+				defender.attr("id", "defenderThree");
 				defender.append(enemyThree.innerHTML);
 				$("#fifth-row").append(defender)
+				$("#attack").show();
 				$('#enemyThree').empty();
 				$('#enemyThree').hide();
 
 						//Compute values between character and defender.
 						$("#attack").on("click", function(){
-							obiAttack +=8;
+							obiAttack +=10;//increased Obi's power for logic to work - numbers to be revised appropriately...
 							var html = "<p>You attacked Darth Maul for " + obiAttack + " damages</p>" +
 									   "<p>Darth Maul attacked you back for " + maulCounterAttack + " damages</p>";           						
 									    document.querySelector("#status").innerHTML = html;
@@ -141,6 +168,18 @@ window.onload = function() {
 						    var html =  document.querySelector("#obiHealth").innerHTML = obiHealth;
 						    maulHealth -= obiAttack;
 						    var html  = document.querySelector("#maulHealth").innerHTML = maulHealth;
+
+						    		if ((obiHealth <= 0) && (maulHealth > 0)) {
+						                $("#status").html("<strong>GAME OVER!!!</strong>");
+						                $("#attack").hide();
+						    			$('#restart').show();
+						    		}
+						    		else if ((obiHealth > 0) && (maulHealth <= 0)) {
+						                $("#status").html("You Win!  Pick your next enemy...");
+						                $("#defenderThree").empty();
+						    			$("#defenderThree").hide();
+						    			$("#attack").hide();
+						    		}
 						});
 			});
 	});
@@ -189,6 +228,7 @@ window.onload = function() {
 				defender.attr("id", "defenderOne");
 				defender.append(enemyOne.innerHTML);
 				$("#fifth-row").append(defender)
+				$("#attack").show();
 				$('#enemyOne').empty();   
 				$('#enemyOne').hide();
 
@@ -202,6 +242,18 @@ window.onload = function() {
 							    var html =  document.querySelector("#skyHealth").innerHTML = skyHealth;
 							    obiHealth -= skyAttack;
 							    var html  = document.querySelector("#obiHealth").innerHTML = obiHealth;
+
+							    		if ((skyHealth <= 0) && (obiHealth > 0)) {
+						                $("#status").html("<strong>GAME OVER!!!</strong>");
+						                $("#attack").hide();
+						    			$('#restart').show();
+						    		}
+						    		else if ((skyHealth > 0) && (obiHealth <= 0)) {
+						                $("#status").html("You Win!  Pick your next enemy...");
+						                $("#defenderOne").empty();
+						    			$("#defenderOne").hide();
+						    			$("#attack").hide();
+						    		}
 							});
 			});
 
@@ -209,9 +261,10 @@ window.onload = function() {
 				var enemyTwo = document.getElementById("enemyTwo");
 				var defender = $("<div>");
 				defender.addClass("defender");
-				defender.attr("id", "defenderOne");
+				defender.attr("id", "defenderTwo");
 				defender.append(enemyTwo.innerHTML);
 				$("#fifth-row").append(defender)
+				$("#attack").show();
 				$('#enemyTwo').empty();
 				$('#enemyTwo').hide();
 
@@ -225,6 +278,18 @@ window.onload = function() {
 							    var html =  document.querySelector("#skyHealth").innerHTML = skyHealth;
 							    sidHealth -= skyAttack;
 							    var html  = document.querySelector("#sidHealth").innerHTML = sidHealth;
+
+							    		if ((skyHealth <= 0) && (sidHealth > 0)) {
+						                $("#status").html("<strong>GAME OVER!!!</strong>");
+						                $("#attack").hide();
+						    			$('#restart').show();
+						    		}
+						    		else if ((skyHealth > 0) && (sidHealth <= 0)) {
+						                $("#status").html("You Win!  Pick your next enemy...");
+						                $("#defenderTwo").empty();
+						    			$("#defenderTwo").hide();
+						    			$("#attack").hide();
+						    		}
 							});
 			});
 
@@ -232,9 +297,10 @@ window.onload = function() {
 				var enemyThree = document.getElementById("enemyThree");
 				var defender = $("<div>");
 				defender.addClass("defender");
-				defender.attr("id", "defenderOne");
+				defender.attr("id", "defenderThree");
 				defender.append(enemyThree.innerHTML);
 				$("#fifth-row").append(defender)
+				$("#attack").show();
 				$('#enemyThree').empty();
 				$('#enemyThree').hide();
 
@@ -248,6 +314,18 @@ window.onload = function() {
 							    var html =  document.querySelector("#skyHealth").innerHTML = skyHealth;
 							    maulHealth -= skyAttack;
 							    var html  = document.querySelector("#maulHealth").innerHTML = maulHealth;
+
+							    		if ((skyHealth <= 0) && (maulHealth > 0)) {
+						                $("#status").html("<strong>GAME OVER!!!</strong>");
+						                $("#attack").hide();
+						    			$('#restart').show();
+						    		}
+						    		else if ((skyHealth > 0) && (maulHealth <= 0)) {
+						                $("#status").html("You Win!  Pick your next enemy...");
+						                $("#defenderThree").empty();
+						    			$("#defenderThree").hide();
+						    			$("#attack").hide();
+						    		}
 							});
 			});
 	});
@@ -296,6 +374,7 @@ window.onload = function() {
 				defender.attr("id", "defenderOne");
 				defender.append(enemyOne.innerHTML);
 				$("#fifth-row").append(defender)
+				$("#attack").show();
 				$('#enemyOne').empty();   
 				$('#enemyOne').hide();
 
@@ -309,6 +388,18 @@ window.onload = function() {
 							    var html =  document.querySelector("#sidHealth").innerHTML = sidHealth;
 							    obiHealth -= sidAttack;
 							    var html  = document.querySelector("#obiHealth").innerHTML = obiHealth;
+
+							    		if ((sidHealth <= 0) && (obiHealth > 0)) {
+						                $("#status").html("<strong>GAME OVER!!!</strong>");
+						                $("#attack").hide();
+						    			$('#restart').show();
+						    		}
+						    		else if ((sidHealth > 0) && (obiHealth <= 0)) {
+						                $("#status").html("You Win!  Pick your next enemy...");
+						                $("#defenderOne").empty();
+						    			$("#defenderOne").hide();
+						    			$("#attack").hide();
+						    		}
 							});
 			});
 
@@ -317,9 +408,10 @@ window.onload = function() {
 				var enemyTwo = document.getElementById("enemyTwo");
 				var defender = $("<div>");
 				defender.addClass("defender");
-				defender.attr("id", "defenderOne");
+				defender.attr("id", "defenderTwo");
 				defender.append(enemyTwo.innerHTML);
 				$("#fifth-row").append(defender)
+				$("#attack").show();
 				$('#enemyTwo').empty();
 				$('#enemyTwo').hide();
 
@@ -333,6 +425,18 @@ window.onload = function() {
 							    var html =  document.querySelector("#sidHealth").innerHTML = sidHealth;
 							    skyHealth -= sidAttack;
 							    var html  = document.querySelector("#skyHealth").innerHTML = skyHealth;
+
+							    		if ((sidHealth <= 0) && (skyHealth > 0)) {
+						                $("#status").html("<strong>GAME OVER!!!</strong>");
+						                $("#attack").hide();
+						    			$('#restart').show();
+						    		}
+						    		else if ((sidHealth > 0) && (skyHealth <= 0)) {
+						                $("#status").html("You Win!  Pick your next enemy...");
+						                $("#defenderTwo").empty();
+						    			$("#defenderTwo").hide();
+						    			$("#attack").hide();
+						    		}
 							});
 			});
 
@@ -341,9 +445,10 @@ window.onload = function() {
 				var enemyThree = document.getElementById("enemyThree");
 				var defender = $("<div>");
 				defender.addClass("defender");
-				defender.attr("id", "defenderOne");
+				defender.attr("id", "defenderThree");
 				defender.append(enemyThree.innerHTML);
 				$("#fifth-row").append(defender)
+				$("#attack").show();
 				$('#enemyThree').empty();
 				$('#enemyThree').hide();
 
@@ -357,6 +462,18 @@ window.onload = function() {
 							    var html =  document.querySelector("#sidHealth").innerHTML = sidHealth;
 							    maulHealth -= sidAttack;
 							    var html  = document.querySelector("#maulHealth").innerHTML = maulHealth;
+
+							    		if ((sidHealth <= 0) && (maulHealth > 0)) {
+						                $("#status").html("<strong>GAME OVER!!!</strong>");
+						                $("#attack").hide();
+						    			$('#restart').show();
+						    		}
+						    		else if ((sidHealth > 0) && (maulHealth <= 0)) {
+						                $("#status").html("You Win!  Pick your next enemy...");
+						                $("#defenderThree").empty();
+						    			$("#defenderThree").hide();
+						    			$("#attack").hide();
+						    		}
 							});
 			});
 	});
@@ -405,6 +522,7 @@ window.onload = function() {
 				defender.attr("id", "defenderOne");
 				defender.append(enemyOne.innerHTML);
 				$("#fifth-row").append(defender)
+				$("#attack").show();
 				$('#enemyOne').empty();   
 				$('#enemyOne').hide();
 
@@ -418,6 +536,18 @@ window.onload = function() {
 							    var html =  document.querySelector("#maulHealth").innerHTML = maulHealth;
 							    obiHealth -= maulAttack;
 							    var html  = document.querySelector("#obiHealth").innerHTML = obiHealth;
+
+							    		if ((maulHealth <= 0) && (obiHealth > 0)) {
+						                $("#status").html("<strong>GAME OVER!!!</strong>");
+						                $("#attack").hide();
+						    			$('#restart').show();
+						    		}
+						    		else if ((maulHealth > 0) && (obiHealth <= 0)) {
+						                $("#status").html("You Win!  Pick your next enemy...");
+						                $("#defenderOne").empty();
+						    			$("#defenderOne").hide();
+						    			$("#attack").hide();
+						    		}
 							});
 			});
 
@@ -426,9 +556,10 @@ window.onload = function() {
 				var enemyTwo = document.getElementById("enemyTwo");
 				var defender = $("<div>");
 				defender.addClass("defender");
-				defender.attr("id", "defenderOne");
+				defender.attr("id", "defenderTwo");
 				defender.append(enemyTwo.innerHTML);
 				$("#fifth-row").append(defender)
+				$("#attack").show();
 				$('#enemyTwo').empty(); 
 				$('#enemyTwo').hide();
 
@@ -442,6 +573,18 @@ window.onload = function() {
 							    var html =  document.querySelector("#maulHealth").innerHTML = maulHealth;
 							    skyHealth -= maulAttack;
 							    var html  = document.querySelector("#skyHealth").innerHTML = skyHealth;
+
+							    		if ((maulHealth <= 0) && (skyHealth > 0)) {
+						                $("#status").html("<strong>GAME OVER!!!</strong>");
+						                $("#attack").hide();
+						    			$('#restart').show();
+						    		}
+						    		else if ((maulHealth > 0) && (skyHealth <= 0)) {
+						                $("#status").html("You Win!  Pick your next enemy...");
+						                $("#defenderTwo").empty();
+						    			$("#defenderTwo").hide();
+						    			$("#attack").hide();
+						    		}
 							});
 			});
 
@@ -450,9 +593,10 @@ window.onload = function() {
 				var enemyThree = document.getElementById("enemyThree");
 				var defender = $("<div>");
 				defender.addClass("defender");
-				defender.attr("id", "defenderOne");
+				defender.attr("id", "defenderThree");
 				defender.append(enemyThree.innerHTML);
 				$("#fifth-row").append(defender)
+				$("#attack").show();
 				$('#enemyThree').empty(); 
 				$('#enemyThree').hide();
 
@@ -466,6 +610,18 @@ window.onload = function() {
 							    var html =  document.querySelector("#maulHealth").innerHTML = maulHealth;
 							    sidHealth -= maulAttack;
 							    var html  = document.querySelector("#sidHealth").innerHTML = sidHealth;
+
+							    		if ((maulHealth <= 0) && (sidHealth > 0)) {
+						                $("#status").html("<strong>GAME OVER!!!</strong>");
+						                $("#attack").hide();
+						    			$('#restart').show();
+						    		}
+						    		else if ((maulHealth > 0) && (sidHealth <= 0)) {
+						                $("#status").html("You Win!  Pick your next enemy...");
+						    			$("#defenderThree").empty();
+						    			$("#defenderThree").hide();
+						    			$("#attack").hide();
+						    		}
 							});
 			});
 	});
