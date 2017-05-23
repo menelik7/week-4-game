@@ -24,19 +24,20 @@ var sky = document.getElementById("second");
 var sidious = document.getElementById("third");
 var maul = document.getElementById("fourth");
 
-var theme = document.getElementById("load");
-window.onload = function() {
-    theme.play();
-}
-
 document.querySelector("#obiHealth").innerHTML = obiHealth;
 document.querySelector("#skyHealth").innerHTML = skyHealth;
 document.querySelector("#sidHealth").innerHTML = sidHealth;
 document.querySelector("#maulHealth").innerHTML = maulHealth;
 
+//Theme song and initial display.
 var restart = document.getElementById("restart");
 window.onload = function() {
 	$('#restart').hide();
+}
+
+var theme = document.getElementById("load");
+window.onload = function() {
+    theme.play();
 }
 
 	//Choose character and append all others to the Enemies row.
