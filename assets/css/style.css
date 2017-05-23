@@ -14,19 +14,23 @@ h1 {
 	float: right;
 }
 
-h2 {
+h3 {
 	margin-top: 0;
 }
 
+p {
+	float: left;
+}
 button {
 	float: left;
 	background: #fff;
 	padding: 0;
 }
-.col-md-12,
+
 .col-md-8,
 .col-md-6,
 .col-md-4 {
+	float: left;
 	text-align: center;
 	padding: 0;
 }
@@ -71,7 +75,12 @@ button {
 	margin: 0;
 }
 
-#restart {
+#status {
+	float: left;
+}
+
+.col-md-5,
+.col-md-12 {
 	padding: 0;
 }
 

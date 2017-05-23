@@ -1,6 +1,7 @@
 $(document).ready(function(){
 
 //Declare variables for all characters.
+
 var obiHealth = 120;
 var obiAttack = 8;
 var obiCounterAttack = 15;
@@ -16,6 +17,12 @@ var sidCounterAttack = 20;
 var maulHealth = 180;
 var maulAttack = 13;
 var maulCounterAttack = 25;
+
+//Character variables
+var obi = document.getElementById("first");
+var sky = document.getElementById("second");
+var sidious = document.getElementById("third");
+var maul = document.getElementById("fourth");
 
 var theme = document.getElementById("load");
 window.onload = function() {
@@ -35,28 +42,28 @@ window.onload = function() {
 	//Choose character and append all others to the Enemies row.
 	//Obi character choice.
 	$("#charOption1").on("click", function(){
-		var charOption1 = document.getElementById("first");
+		var charOption1 = obi;
 		var character = $("<div>");
 		character.addClass("character");
 		character.attr("id", "characterOne");
 		character.append(charOption1.innerHTML);
 		$("#second-row").append(character);
 
-		var charOption2 = document.getElementById("second");
+		var charOption2 = sky;
 		var enemyOption1 = $("<div>");
 		enemyOption1.addClass("enemy");
 		enemyOption1.attr("id", "enemyOne");
 		enemyOption1.append(charOption2.innerHTML);
 		$("#third-row").append(enemyOption1);
 
-		var charOption3 = document.getElementById("third");
+		var charOption3 = sidious;
 		var enemyOption2 = $("<div>");
 		enemyOption2.addClass("enemy");
 		enemyOption2.attr("id", "enemyTwo");
 		enemyOption2.append(charOption3.innerHTML);
 		$("#third-row").append(enemyOption2);
 
-		var charOption4 = document.getElementById("fourth");
+		var charOption4 = maul;
 		var enemyOption3 = $("<div>");
 		enemyOption3.addClass("enemy");
 		enemyOption3.attr("id", "enemyThree");
@@ -75,6 +82,18 @@ window.onload = function() {
 				defender.append(enemyOne.innerHTML);
 				$("#fifth-row").append(defender)   
 				$('#enemyOne').hide();
+
+						$("#attack").on("click", function(){
+							
+							var html = "<p>You attacked Luke Skywalker for " + obiAttack + " damages</p>" +
+									   "<p>Luke Skywalker attacked you back for " + skyAttack + " damages</p>";           						
+									    document.querySelector("#status").innerHTML = html;
+						    var obiHealthStatus = obiHealth - skyAttack;
+						    var skyHealthStatus = skyHealth - obiAttack;
+						    var html =  document.querySelector("#obiHealth").innerHTML = obiHealthStatus;
+						    var html =  document.querySelector("#skyHealth").innerHTML = skyHealthStatus;
+
+						});
 			});
 
 			$("#enemyTwo").on("click", function(){
