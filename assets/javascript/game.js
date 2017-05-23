@@ -31,13 +31,10 @@ document.querySelector("#maulHealth").innerHTML = maulHealth;
 
 //Theme song and initial display.
 var restart = document.getElementById("restart");
-window.onload = function() {
-	$('#restart').hide();
-}
-
 var theme = document.getElementById("load");
 window.onload = function() {
     theme.play();
+    $('#restart').hide();
 }
 
 	//Choose character and append all others to the Enemies row.
