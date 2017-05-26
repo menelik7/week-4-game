@@ -36,6 +36,9 @@ window.onload = function() {
     theme.play();
     $('#restart').hide();
 }
+$("#attack1").hide();
+$("#attack2").hide();
+$("#attack3").hide();  
 
 	//Choose character and append all others to the Enemies row.
 
@@ -71,7 +74,7 @@ window.onload = function() {
 		$("#third-row").append(enemyOption3);
 
 		//Empty all first row content.
-	    $('#first-row').empty();
+	    $('#first-row').remove();
 
 
 	    	//Append chosen enemy to the defender row.
@@ -82,12 +85,14 @@ window.onload = function() {
 				defender.attr("id", "defenderOne");
 				defender.append(enemyOne.innerHTML);
 				$("#fifth-row").append(defender)
-				$("#attack").show();   
-				$('#enemyOne').empty();
-				$('#enemyOne').hide();
+				$('#enemyOne').remove();
+				$("#status").empty();
+				$("#attack1").show();
+				$("#attack2").hide();
+				$("#attack3").hide();   
 
 						//Compute values between character and defender, and render results in the appropriate divs.
-						$("#attack").on("click", function(){
+						$("#attack1").on("click", function(){
 							obiAttack +=8;
 							var html = "<p>You attacked Luke Skywalker for " + obiAttack + " damages</p>" +
 									   "<p>Luke Skywalker attacked you back for " + skyCounterAttack + " damages</p>";           						
@@ -97,16 +102,16 @@ window.onload = function() {
 						    skyHealth -= obiAttack;
 						   				$("#skyHealth").html(skyHealth);
 
-						    		if ((obiHealth <= 0) && (skyHealth > 0)) {
+						    		if (obiHealth <= 0) {
 						                $("#status").html("<strong>GAME OVER!!!</strong>");
-						                $("#attack").hide();
+						                $("#attack1").hide();
 						    			$('#restart').show();
 						    		}
 						    		else if ((obiHealth > 0) && (skyHealth <= 0)) {
-						                $("#status").html("You Win!  Pick your next enemy...");
-						    			$("#defenderOne").hide();
-						    			$("#defenderOne").empty();
-						    			$("#attack").hide();
+						                $("#status").html("<strong><span style='color:#fff'>You Win!  Pick your next enemy...</span></strong>");
+						    			$("#defenderOne").remove();
+						    			$("#attack1").hide();
+
 						    		}
 						});
 			});
@@ -118,13 +123,15 @@ window.onload = function() {
 				defender.attr("id", "defenderTwo");
 				defender.append(enemyTwo.innerHTML);
 				$("#fifth-row").append(defender)
-				$("#attack").show();
-				$('#enemyTwo').empty();
-				$('#enemyTwo').hide();
+				$('#enemyTwo').remove();
+				$("#status").empty();
+				$("#attack1").hide();
+				$("#attack2").show();
+				$("#attack3").hide();  
 
 						//Compute values between character and defender.
-						$("#attack").on("click", function(){
-							obiAttack +=10;
+						$("#attack2").on("click", function(){
+							obiAttack +=8;
 							var html = "<p>You attacked Darth Sidious for " + obiAttack + " damages</p>" +
 									   "<p>Darth Sidious attacked you back for " + sidCounterAttack + " damages</p>";           						
 									    document.querySelector("#status").innerHTML = html;
@@ -133,16 +140,16 @@ window.onload = function() {
 						    sidHealth -= obiAttack;
 						    			$("#sidHealth").html(sidHealth);
 
-						    		if ((obiHealth <= 0) && (sidHealth > 0)) {
+						    		if (obiHealth <= 0) {
 						                $("#status").html("<strong>GAME OVER!!!</strong>");
-						                $("#attack").hide();
+						                $("#attack2").hide();
 						    			$('#restart').show();
 						    		}
 						    		else if ((obiHealth > 0) && (sidHealth <= 0)) {
-						                $("#status").html("You Win!  Pick your next enemy...");
-						                $("#defenderTwo").empty();
-						    			$("#defenderTwo").hide();
-						    			$("#attack").hide();
+						                $("#status").html("<strong><span style='color:#fff'>You Win!  Pick your next enemy...</span></strong>");
+						                $("#defenderTwo").remove();
+						    			$("#attack2").hide();
+						    			$("#attack2").hide();
 						    		}
 						});
 			});
@@ -154,31 +161,33 @@ window.onload = function() {
 				defender.attr("id", "defenderThree");
 				defender.append(enemyThree.innerHTML);
 				$("#fifth-row").append(defender)
-				$("#attack").show();
-				$('#enemyThree').empty();
-				$('#enemyThree').hide();
+				$('#enemyThree').remove();
+				$("#status").empty();
+				$("#attack1").hide();
+				$("#attack2").hide();
+				$("#attack3").show();  
 
 						//Compute values between character and defender.
-						$("#attack").on("click", function(){
-							obiAttack +=10;//increased Obi's power for logic to work - numbers to be revised appropriately...
+						$("#attack3").on("click", function(){
+							obiAttack +=8;//increased Obi's power for logic to work - numbers to be revised appropriately...
 							var html = "<p>You attacked Darth Maul for " + obiAttack + " damages</p>" +
 									   "<p>Darth Maul attacked you back for " + maulCounterAttack + " damages</p>";           						
 									    document.querySelector("#status").innerHTML = html;
 						    obiHealth -= maulCounterAttack;
-						    var html =  document.querySelector("#obiHealth").innerHTML = obiHealth;
+						    			$("#obiHealth").html(obiHealth);
 						    maulHealth -= obiAttack;
-						    var html  = document.querySelector("#maulHealth").innerHTML = maulHealth;
+						    			$("#maulHealth").html(maulHealth);
 
-						    		if ((obiHealth <= 0) && (maulHealth > 0)) {
+						    		if (obiHealth <= 0) {
 						                $("#status").html("<strong>GAME OVER!!!</strong>");
-						                $("#attack").hide();
+						                $("#attack3").hide();
 						    			$('#restart').show();
 						    		}
 						    		else if ((obiHealth > 0) && (maulHealth <= 0)) {
-						                $("#status").html("You Win!  Pick your next enemy...");
-						                $("#defenderThree").empty();
-						    			$("#defenderThree").hide();
-						    			$("#attack").hide();
+						                $("#status").html("<strong><span style='color:#fff'>You Win!  Pick your next enemy...</span></strong>");
+						                $("#defenderThree").remove();
+						    			$("#attack3").hide();
+						    			$("#attack1").hide();
 						    		}
 						});
 			});
@@ -217,7 +226,7 @@ window.onload = function() {
 		$("#third-row").append(enemyOption3);
 
 		//Empty all first row content.
-	    $('#first-row').empty();
+	    $('#first-row').remove();
 
 
 	    	//Append chosen enemy to the defender row.
@@ -228,31 +237,32 @@ window.onload = function() {
 				defender.attr("id", "defenderOne");
 				defender.append(enemyOne.innerHTML);
 				$("#fifth-row").append(defender)
-				$("#attack").show();
-				$('#enemyOne').empty();   
-				$('#enemyOne').hide();
+				$('#enemyOne').remove();
+				$("#status").empty();
+				$("#attack1").show();
+				$("#attack2").hide();
+				$("#attack3").hide();
 
 							//Compute values between character and defender.
-							$("#attack").on("click", function(){
+							$("#attack1").on("click", function(){
 								skyAttack +=5;
 								var html = "<p>You attacked Obi-Wan Kenobi for " + skyAttack + " damages</p>" +
 										   "<p>Obi-Wan Kenobi attacked you back for " + obiCounterAttack + " damages</p>";           						
 										    document.querySelector("#status").innerHTML = html;
 							    skyHealth -= obiCounterAttack;
-							    var html =  document.querySelector("#skyHealth").innerHTML = skyHealth;
+							    			$("#skyHealth").html(skyHealth);
 							    obiHealth -= skyAttack;
-							    var html  = document.querySelector("#obiHealth").innerHTML = obiHealth;
+							    			$("#obiHealth").html(obiHealth);
 
-							    		if ((skyHealth <= 0) && (obiHealth > 0)) {
+							    		if (skyHealth <= 0) {
 						                $("#status").html("<strong>GAME OVER!!!</strong>");
-						                $("#attack").hide();
+						                $("#attack1").hide();
 						    			$('#restart').show();
 						    		}
 						    		else if ((skyHealth > 0) && (obiHealth <= 0)) {
-						                $("#status").html("You Win!  Pick your next enemy...");
-						                $("#defenderOne").empty();
-						    			$("#defenderOne").hide();
-						    			$("#attack").hide();
+						                $("#status").html("<strong><span style='color:#fff'>You Win!  Pick your next enemy...</span></strong>");
+						                $("#defenderOne").remove();
+						    			$("#attack1").hide();
 						    		}
 							});
 			});
@@ -264,31 +274,32 @@ window.onload = function() {
 				defender.attr("id", "defenderTwo");
 				defender.append(enemyTwo.innerHTML);
 				$("#fifth-row").append(defender)
-				$("#attack").show();
-				$('#enemyTwo').empty();
-				$('#enemyTwo').hide();
+				$('#enemyTwo').remove();
+				$("#status").empty();
+				$("#attack1").hide();
+				$("#attack2").show();
+				$("#attack3").hide();
 
 							//Compute values between character and defender.
-							$("#attack").on("click", function(){
+							$("#attack2").on("click", function(){
 								skyAttack +=5;
 								var html = "<p>You attacked Darth Sidious for " + skyAttack + " damages</p>" +
 										   "<p>Darth Sidious attacked you back for " + sidCounterAttack + " damages</p>";           						
 										    document.querySelector("#status").innerHTML = html;
 							    skyHealth -= sidCounterAttack;
-							    var html =  document.querySelector("#skyHealth").innerHTML = skyHealth;
+							    			$("#skyHealth").html(skyHealth);
 							    sidHealth -= skyAttack;
-							    var html  = document.querySelector("#sidHealth").innerHTML = sidHealth;
+							    			$("#sidHealth").html(sidHealth);
 
-							    		if ((skyHealth <= 0) && (sidHealth > 0)) {
+							    		if (skyHealth <= 0) {
 						                $("#status").html("<strong>GAME OVER!!!</strong>");
-						                $("#attack").hide();
+						                $("#attack2").hide();
 						    			$('#restart').show();
 						    		}
 						    		else if ((skyHealth > 0) && (sidHealth <= 0)) {
-						                $("#status").html("You Win!  Pick your next enemy...");
-						                $("#defenderTwo").empty();
-						    			$("#defenderTwo").hide();
-						    			$("#attack").hide();
+						                $("#status").html("<strong><span style='color:#fff'>You Win!  Pick your next enemy...</span></strong>");
+						                $("#defenderTwo").remove();
+						    			$("#attack2").hide();
 						    		}
 							});
 			});
@@ -300,31 +311,32 @@ window.onload = function() {
 				defender.attr("id", "defenderThree");
 				defender.append(enemyThree.innerHTML);
 				$("#fifth-row").append(defender)
-				$("#attack").show();
-				$('#enemyThree').empty();
-				$('#enemyThree').hide();
+				$('#enemyThree').remove();
+				$("#status").empty();
+				$("#attack1").hide();
+				$("#attack2").hide();
+				$("#attack3").show();
 
 							//Compute values between character and defender.
-							$("#attack").on("click", function(){
+							$("#attack3").on("click", function(){
 								skyAttack +=5;
 								var html = "<p>You attacked Darth Maul for " + skyAttack + " damages</p>" +
 										   "<p>Darth Maul attacked you back for " + maulCounterAttack + " damages</p>";           						
 										    document.querySelector("#status").innerHTML = html;
 							    skyHealth -= maulCounterAttack;
-							    var html =  document.querySelector("#skyHealth").innerHTML = skyHealth;
+							    			$("#skyHealth").html(skyHealth);
 							    maulHealth -= skyAttack;
-							    var html  = document.querySelector("#maulHealth").innerHTML = maulHealth;
+							    			$("#maulHealth").html(maulHealth);
 
-							    		if ((skyHealth <= 0) && (maulHealth > 0)) {
+							    		if (skyHealth <= 0) {
 						                $("#status").html("<strong>GAME OVER!!!</strong>");
-						                $("#attack").hide();
+						                $("#attack3").hide();
 						    			$('#restart').show();
 						    		}
 						    		else if ((skyHealth > 0) && (maulHealth <= 0)) {
-						                $("#status").html("You Win!  Pick your next enemy...");
-						                $("#defenderThree").empty();
-						    			$("#defenderThree").hide();
-						    			$("#attack").hide();
+						                $("#status").html("<strong><span style='color:#fff'>You Win!  Pick your next enemy...</span></strong>");
+						                $("#defenderThree").remove();
+						    			$("#attack3").hide();
 						    		}
 							});
 			});
@@ -363,7 +375,7 @@ window.onload = function() {
 		$("#third-row").append(enemyOption3);
 
 		//Empty all first row content.
-	    $('#first-row').empty();
+	    $('#first-row').remove();
 
 
 	    	//Append chosen enemy to the defender row.
@@ -374,31 +386,32 @@ window.onload = function() {
 				defender.attr("id", "defenderOne");
 				defender.append(enemyOne.innerHTML);
 				$("#fifth-row").append(defender)
-				$("#attack").show();
-				$('#enemyOne').empty();   
-				$('#enemyOne').hide();
+				$('#enemyOne').remove();
+				$("#status").empty();
+				$("#attack1").show();
+				$("#attack2").hide();
+				$("#attack3").hide();
 
 							//Compute values between character and defender.
-							$("#attack").on("click", function(){
-								sidAttack +=8;
+							$("#attack1").on("click", function(){
+								sidAttack +=10;
 								var html = "<p>You attacked Obi-Wan Kenobi for " + sidAttack + " damages</p>" +
 										   "<p>Obi-Wan Kenobi attacked you back for " + obiCounterAttack + " damages</p>";           						
 										    document.querySelector("#status").innerHTML = html;
 							    sidHealth -= obiCounterAttack;
-							    var html =  document.querySelector("#sidHealth").innerHTML = sidHealth;
+							    			$("#sidHealth").html(sidHealth);
 							    obiHealth -= sidAttack;
-							    var html  = document.querySelector("#obiHealth").innerHTML = obiHealth;
+							    			$("#obiHealth").html(obiHealth);
 
-							    		if ((sidHealth <= 0) && (obiHealth > 0)) {
+							    		if (sidHealth <= 0) {
 						                $("#status").html("<strong>GAME OVER!!!</strong>");
-						                $("#attack").hide();
+						                $("#attack1").hide();
 						    			$('#restart').show();
 						    		}
 						    		else if ((sidHealth > 0) && (obiHealth <= 0)) {
-						                $("#status").html("You Win!  Pick your next enemy...");
-						                $("#defenderOne").empty();
-						    			$("#defenderOne").hide();
-						    			$("#attack").hide();
+						                $("#status").html("<strong><span style='color:#fff'>You Win!  Pick your next enemy...</span></strong>");
+						                $("#defenderOne").remove();
+						    			$("#attack1").hide();
 						    		}
 							});
 			});
@@ -411,31 +424,32 @@ window.onload = function() {
 				defender.attr("id", "defenderTwo");
 				defender.append(enemyTwo.innerHTML);
 				$("#fifth-row").append(defender)
-				$("#attack").show();
-				$('#enemyTwo').empty();
-				$('#enemyTwo').hide();
+				$('#enemyTwo').remove();
+				$("#status").empty();
+				$("#attack1").hide();
+				$("#attack2").show();
+				$("#attack3").hide();
 
 							//Compute values between character and defender.
-							$("#attack").on("click", function(){
-								sidAttack +=8;
+							$("#attack2").on("click", function(){
+								sidAttack +=10;
 								var html = "<p>You attacked Luke Skywalker for " + sidAttack + " damages</p>" +
 										   "<p>Luke Skywalker attacked you back for " + skyCounterAttack + " damages</p>";           						
 										    document.querySelector("#status").innerHTML = html;
 							    sidHealth -= skyCounterAttack;
-							    var html =  document.querySelector("#sidHealth").innerHTML = sidHealth;
+							    			$("#sidHealth").html(sidHealth);
 							    skyHealth -= sidAttack;
-							    var html  = document.querySelector("#skyHealth").innerHTML = skyHealth;
+							    			$("#skyHealth").html(skyHealth);
 
-							    		if ((sidHealth <= 0) && (skyHealth > 0)) {
+							    		if (sidHealth <= 0){
 						                $("#status").html("<strong>GAME OVER!!!</strong>");
-						                $("#attack").hide();
+						                $("#attack2").hide();
 						    			$('#restart').show();
 						    		}
 						    		else if ((sidHealth > 0) && (skyHealth <= 0)) {
-						                $("#status").html("You Win!  Pick your next enemy...");
-						                $("#defenderTwo").empty();
-						    			$("#defenderTwo").hide();
-						    			$("#attack").hide();
+						                $("#status").html("<strong><span style='color:#fff'>You Win!  Pick your next enemy...</span></strong>");
+						                $("#defenderTwo").remove();
+						    			$("#attack2").hide();
 						    		}
 							});
 			});
@@ -448,31 +462,32 @@ window.onload = function() {
 				defender.attr("id", "defenderThree");
 				defender.append(enemyThree.innerHTML);
 				$("#fifth-row").append(defender)
-				$("#attack").show();
-				$('#enemyThree').empty();
-				$('#enemyThree').hide();
+				$('#enemyThree').remove();
+				$("#status").empty();
+				$("#attack1").hide();
+				$("#attack2").hide();
+				$("#attack3").show();
 
 							//Compute values between character and defender.
-							$("#attack").on("click", function(){
-								sidAttack +=8;
+							$("#attack3").on("click", function(){
+								sidAttack +=10;
 								var html = "<p>You attacked Darth Maul for " + sidAttack + " damages</p>" +
 										   "<p>Darth Maul attacked you back for " + maulCounterAttack + " damages</p>";           						
 										    document.querySelector("#status").innerHTML = html;
 							    sidHealth -= maulCounterAttack;
-							    var html =  document.querySelector("#sidHealth").innerHTML = sidHealth;
+							    			$("#sidHealth").html(sidHealth);
 							    maulHealth -= sidAttack;
-							    var html  = document.querySelector("#maulHealth").innerHTML = maulHealth;
+							    			$("#maulHealth").html(maulHealth);
 
-							    		if ((sidHealth <= 0) && (maulHealth > 0)) {
+							    		if (sidHealth <= 0) {
 						                $("#status").html("<strong>GAME OVER!!!</strong>");
-						                $("#attack").hide();
+						                $("#attack3").hide();
 						    			$('#restart').show();
 						    		}
 						    		else if ((sidHealth > 0) && (maulHealth <= 0)) {
-						                $("#status").html("You Win!  Pick your next enemy...");
-						                $("#defenderThree").empty();
-						    			$("#defenderThree").hide();
-						    			$("#attack").hide();
+						                $("#status").html("<strong><span style='color:#fff'>You Win!  Pick your next enemy...</span></strong>");
+						                $("#defenderThree").remove();
+						    			$("#attack3").hide();
 						    		}
 							});
 			});
@@ -511,7 +526,7 @@ window.onload = function() {
 		$("#third-row").append(enemyOption3);
 
 		//Empty all first row content.
-	    $('#first-row').empty();
+	    $('#first-row').remove();
 
 
 	    	//Append chosen enemy to the defender row.
@@ -522,31 +537,32 @@ window.onload = function() {
 				defender.attr("id", "defenderOne");
 				defender.append(enemyOne.innerHTML);
 				$("#fifth-row").append(defender)
-				$("#attack").show();
-				$('#enemyOne').empty();   
-				$('#enemyOne').hide();
+				$('#enemyOne').remove();
+				$("#status").empty();
+				$("#attack1").show();
+				$("#attack2").hide();
+				$("#attack3").hide();
 
 							//Compute values between character and defender.
-							$("#attack").on("click", function(){
-								maulAttack +=10;
+							$("#attack1").on("click", function(){
+								maulAttack +=12;
 								var html = "<p>You attacked Obi-Wan Kenobi for " + maulAttack + " damages</p>" +
 										   "<p>Obi-Wan Kenobi attacked you back for " + obiCounterAttack + " damages</p>";           						
 										    document.querySelector("#status").innerHTML = html;
 							    maulHealth -= obiCounterAttack;
-							    var html =  document.querySelector("#maulHealth").innerHTML = maulHealth;
+							    			$("#maulHealth").html(maulHealth);
 							    obiHealth -= maulAttack;
-							    var html  = document.querySelector("#obiHealth").innerHTML = obiHealth;
+							    			$("#obiHealth").html(obiHealth);
 
-							    		if ((maulHealth <= 0) && (obiHealth > 0)) {
+							    		if (maulHealth <= 0){
 						                $("#status").html("<strong>GAME OVER!!!</strong>");
-						                $("#attack").hide();
+						                $("#attack1").hide();
 						    			$('#restart').show();
 						    		}
 						    		else if ((maulHealth > 0) && (obiHealth <= 0)) {
-						                $("#status").html("You Win!  Pick your next enemy...");
-						                $("#defenderOne").empty();
-						    			$("#defenderOne").hide();
-						    			$("#attack").hide();
+						                $("#status").html("<strong><span style='color:#fff'>You Win!  Pick your next enemy...</span></strong>");
+						                $("#defenderOne").remove();
+						    			$("#attack1").hide();
 						    		}
 							});
 			});
@@ -559,31 +575,32 @@ window.onload = function() {
 				defender.attr("id", "defenderTwo");
 				defender.append(enemyTwo.innerHTML);
 				$("#fifth-row").append(defender)
-				$("#attack").show();
-				$('#enemyTwo').empty(); 
-				$('#enemyTwo').hide();
+				$('#enemyTwo').remove();
+				$("#status").empty();
+				$("#attack1").hide();
+				$("#attack2").show();
+				$("#attack3").hide();
 
 							//Compute values between character and defender.
-							$("#attack").on("click", function(){
-								maulAttack +=10;
+							$("#attack2").on("click", function(){
+								maulAttack +=12;
 								var html = "<p>You attacked Luke Skywalker for " + maulAttack + " damages</p>" +
 										   "<p>Luke Skywalker attacked you back for " + skyCounterAttack + " damages</p>";           						
 										    document.querySelector("#status").innerHTML = html;
 							    maulHealth -= skyCounterAttack;
-							    var html =  document.querySelector("#maulHealth").innerHTML = maulHealth;
+						    				$("#maulHealth").html(maulHealth);
 							    skyHealth -= maulAttack;
-							    var html  = document.querySelector("#skyHealth").innerHTML = skyHealth;
+							    			$("#skyHealth").html(skyHealth);
 
-							    		if ((maulHealth <= 0) && (skyHealth > 0)) {
+							    		if (maulHealth <= 0){
 						                $("#status").html("<strong>GAME OVER!!!</strong>");
-						                $("#attack").hide();
+						                $("#attack2").hide();
 						    			$('#restart').show();
 						    		}
 						    		else if ((maulHealth > 0) && (skyHealth <= 0)) {
-						                $("#status").html("You Win!  Pick your next enemy...");
-						                $("#defenderTwo").empty();
-						    			$("#defenderTwo").hide();
-						    			$("#attack").hide();
+						                $("#status").html("<strong><span style='color:#fff'>You Win!  Pick your next enemy...</span></strong>");
+						                $("#defenderTwo").remove();
+						    			$("#attack2").hide();
 						    		}
 							});
 			});
@@ -596,31 +613,32 @@ window.onload = function() {
 				defender.attr("id", "defenderThree");
 				defender.append(enemyThree.innerHTML);
 				$("#fifth-row").append(defender)
-				$("#attack").show();
-				$('#enemyThree').empty(); 
-				$('#enemyThree').hide();
+				$('#enemyThree').remove();
+				$("#status").empty();
+				$("#attack1").hide();
+				$("#attack2").hide();
+				$("#attack3").show();
 
 							//Compute values between character and defender.
-							$("#attack").on("click", function(){
-								maulAttack +=10;
+							$("#attack3").on("click", function(){
+								maulAttack +=12;
 								var html = "<p>You attacked Darth Sidious for " + maulAttack + " damages</p>" +
 										   "<p>Darth Sidious attacked you back for " + sidCounterAttack + " damages</p>";           						
 										    document.querySelector("#status").innerHTML = html;
 							    maulHealth -= sidCounterAttack;
-							    var html =  document.querySelector("#maulHealth").innerHTML = maulHealth;
+							    			$("#maulHealth").html(maulHealth);
 							    sidHealth -= maulAttack;
-							    var html  = document.querySelector("#sidHealth").innerHTML = sidHealth;
+							    			$("#sidHealth").html(sidHealth);
 
-							    		if ((maulHealth <= 0) && (sidHealth > 0)) {
+							    		if (maulHealth <= 0) {
 						                $("#status").html("<strong>GAME OVER!!!</strong>");
-						                $("#attack").hide();
+						                $("#attack3").hide();
 						    			$('#restart').show();
 						    		}
 						    		else if ((maulHealth > 0) && (sidHealth <= 0)) {
-						                $("#status").html("You Win!  Pick your next enemy...");
-						    			$("#defenderThree").empty();
-						    			$("#defenderThree").hide();
-						    			$("#attack").hide();
+						                $("#status").html("<strong><span style='color:#fff'>You Win!  Pick your next enemy...</span></strong>");
+						    			$("#defenderThree").remove();
+						    			$("#attack3").hide();
 						    		}
 							});
 			});
