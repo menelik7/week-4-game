@@ -644,6 +644,4 @@ $("#attack3").hide();
 			});
 	});
 
-//If functions remaining to determine winner/loser and compute the increment of power and store the value for the next fight.
-
 });
